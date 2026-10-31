@@ -25,22 +25,21 @@ section{padding:66px 0}.soft{background:var(--paper)}h2{font-size:clamp(1.8rem,3
 footer{background:#0d202c;color:#d6e1e4;padding:28px 0;font-size:.9rem}footer .foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .small{font-size:.88rem;color:var(--muted)}.notice{border-left:4px solid var(--teal);padding:14px 18px;background:#eff8f6;border-radius:0 10px 10px 0;color:#3e555c}
 @media(max-width:760px){.nav{padding:14px 0;align-items:flex-start;flex-direction:column}nav{gap:12px}.hero{padding:66px 0}.grid,.grid.two,.split{grid-template-columns:1fr}section{padding:48px 0}}
-/* Small portrait logo animation video */
 .logo-video-wrapper {
   width: 100%;
-  max-width: 130px;
-  margin: 20px auto;
+  max-width: 220px;
+  margin: 25px auto;
   text-align: center;
 }
 
 .logo-video-wrapper video {
   display: block;
-  width: 240px !important;
-  max-width: 240px !important;
+  width: 200px !important;
+  max-width: 200px !important;
   height: auto !important;
   aspect-ratio: 9 / 16;
   object-fit: contain;
-  margin: 10px auto;
+  margin: 12px auto;
   background: #000;
-  border-radius: 10px;
+  border-radius: 12px;
 }
