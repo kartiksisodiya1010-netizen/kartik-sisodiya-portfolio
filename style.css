@@ -61,3 +61,35 @@ footer{background:#0d202c;color:#d6e1e4;padding:28px 0;font-size:.9rem}footer .f
   font-size: 16px;
   margin-bottom: 6px;
 }
+
+.social-links-section {
+  text-align: center;
+  padding: 35px 20px;
+}
+
+.social-links-section h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-links a {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #0b2545;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.social-links a:hover {
+  background: #12b8a6;
+}
