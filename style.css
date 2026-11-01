@@ -72,27 +72,7 @@ footer{background:#0d202c;color:#d6e1e4;padding:28px 0;font-size:.9rem}footer .f
   margin-bottom: 10px;
 }
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 20px;
-}
 
-.social-links a {
-  display: inline-block;
-  padding: 12px 20px;
-  background: #0b2545;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: 0.3s;
-}
-
-.social-links a:hover {
-  background: #12b8a6;
-}
 /* My Online Presence */
 
 .social-links {
@@ -108,54 +88,22 @@ footer{background:#0d202c;color:#d6e1e4;padding:28px 0;font-size:.9rem}footer .f
     width: 60px;
     height: 60px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    background: transparent;
-    transition: all 0.3s ease;
-}
-
-.social-links a img {
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
-    display: block;
-    mix-blend-mode: normal;
-    transition: transform 0.3s ease;
-}
-
-.social-links a:hover {
-    transform: translateY(-6px);
-}
-
-.social-links a:hover img {
-    transform: scale(1.12);
-}
-.social-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    flex-wrap: wrap;
-    margin-top: 25px;
-}
-
-.social-links a {
-    width: 55px;
-    height: 55px;
-    display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
     border-radius: 12px;
     background: transparent;
-    transition: 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .social-links i {
-    font-size: 38px;
-    transition: 0.3s ease;
+    display: inline-block;
+    font-size: 40px;
+    font-style: normal;
+    transition: transform 0.3s ease;
 }
+
+/* Brand Colours */
 
 .social-links .behance {
     color: #1769FF;
@@ -174,8 +122,8 @@ footer{background:#0d202c;color:#d6e1e4;padding:28px 0;font-size:.9rem}footer .f
         #962FBF,
         #4F5BD5
     );
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -186,6 +134,8 @@ footer{background:#0d202c;color:#d6e1e4;padding:28px 0;font-size:.9rem}footer .f
 .social-links .youtube {
     color: #FF0000;
 }
+
+/* Hover Effect */
 
 .social-links a:hover {
     transform: translateY(-6px);
