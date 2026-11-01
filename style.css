@@ -93,3 +93,40 @@ footer{background:#0d202c;color:#d6e1e4;padding:28px 0;font-size:.9rem}footer .f
 .social-links a:hover {
   background: #12b8a6;
 }
+/* My Online Presence - Social Media Logos */
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.social-links a {
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.social-links a img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.social-links a:hover img {
+    transform: scale(1.12);
+}
