@@ -9,6 +9,100 @@
 <title>Portfolio | Kartik Sisodiya</title>
 
 <link rel="stylesheet" href="style.css">
+
+<style>
+/* Business Card Showcase */
+.business-showcase {
+    max-width: 850px;
+    margin: 35px auto 10px;
+    padding: 25px;
+    background: var(--card, #ffffff);
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+.business-showcase h3 {
+    margin-bottom: 8px;
+}
+
+.business-showcase .showcase-description {
+    margin-bottom: 22px;
+}
+
+.business-slider {
+    overflow: hidden;
+    border-radius: 12px;
+    touch-action: pan-y;
+    cursor: grab;
+    user-select: none;
+}
+
+.business-slider:active {
+    cursor: grabbing;
+}
+
+.business-track {
+    display: flex;
+    transition: transform 0.45s ease;
+}
+
+.business-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.business-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: contain;
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+.business-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.business-controls button {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.business-controls button:hover {
+    opacity: 0.8;
+}
+
+.business-side-label {
+    font-weight: 600;
+    min-width: 90px;
+}
+
+@media (max-width: 600px) {
+    .business-showcase {
+        padding: 15px;
+    }
+
+    .business-controls {
+        gap: 10px;
+    }
+
+    .business-controls button {
+        padding: 9px 13px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -39,7 +133,6 @@
         <p>A growing collection of engineering, graphic design and digital creative projects.</p>
     </div>
 </section>
-
 
 <!-- Main Project Categories -->
 <section>
@@ -75,10 +168,8 @@
             </div>
 
         </div>
-
     </div>
 </section>
-
 
 <!-- Graphic Design Section -->
 <section class="soft" id="graphic-design">
@@ -94,7 +185,6 @@
 
         <div class="grid">
 
-            <!-- 1. Logo Design -->
             <div class="card">
                 <div class="icon">✳</div>
                 <h3>Logo Design</h3>
@@ -102,7 +192,6 @@
                 <span class="pill">Logo Projects</span>
             </div>
 
-            <!-- 2. Poster Design -->
             <div class="card">
                 <div class="icon">▣</div>
                 <h3>Poster Design</h3>
@@ -110,7 +199,6 @@
                 <span class="pill">Poster Projects</span>
             </div>
 
-            <!-- 3. Invitation Card -->
             <div class="card">
                 <div class="icon">✉</div>
                 <h3>Invitation Card</h3>
@@ -118,15 +206,13 @@
                 <span class="pill">Invitation Projects</span>
             </div>
 
-            <!-- 4. Business Card -->
             <div class="card">
                 <div class="icon">▤</div>
                 <h3>Business Card</h3>
                 <p>Professional business cards and personal branding materials.</p>
-                <span class="pill">Business Card Projects</span>
+                <a class="btn" href="#business-card-showcase">View Business Card</a>
             </div>
 
-            <!-- 5. Infographic Design -->
             <div class="card">
                 <div class="icon">▥</div>
                 <h3>Infographic Design</h3>
@@ -134,7 +220,6 @@
                 <span class="pill">Infographic Projects</span>
             </div>
 
-            <!-- 6. Banner Design -->
             <div class="card">
                 <div class="icon">▭</div>
                 <h3>Banner Design</h3>
@@ -142,7 +227,6 @@
                 <span class="pill">Banner Projects</span>
             </div>
 
-            <!-- 7. Thumbnail Design -->
             <div class="card">
                 <div class="icon">▶</div>
                 <h3>Thumbnail Design</h3>
@@ -152,24 +236,61 @@
 
         </div>
 
-    </div>
-</section>
+        <!-- Business Card Front and Back Showcase -->
+        <div class="business-showcase" id="business-card-showcase">
 
+            <div class="eyebrow">My Creative Work</div>
+            <h3>Business Card Design</h3>
 
-<!-- Publishing Notice -->
-<section>
-    <div class="wrap">
+            <p class="showcase-description">
+                Explore both sides of my business card design.
+                Swipe or use the buttons to view the design.
+            </p>
 
-        <div class="notice">
-            <b>Portfolio Update:</b>
-            Add your original design images, completed projects and relevant project links to each category as your work becomes ready to share. Clearly label practice and concept designs.
+            <div class="business-slider" id="businessSlider">
+                <div class="business-track" id="businessTrack">
+
+                    <div class="business-slide">
+                        <img
+                            src="assets/portfolio/business-card/Business%20Card%20%201%20Front%20Side.png"
+                            alt="Business Card Front Side">
+                    </div>
+
+                    <div class="business-slide">
+                        <img
+                            src="assets/portfolio/business-card/Business%20Card%20Design%20Back%20Side.png"
+                            alt="Business Card Back Side">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="business-controls">
+                <button type="button" id="businessPrev">← Previous</button>
+
+                <span class="business-side-label" id="businessLabel">
+                    Front Side
+                </span>
+
+                <button type="button" id="businessNext">Next →</button>
+            </div>
+
         </div>
 
     </div>
 </section>
 
-</main>
+<!-- Publishing Notice -->
+<section>
+    <div class="wrap">
+        <div class="notice">
+            <b>Portfolio Update:</b>
+            Add your original design images, completed projects and relevant project links to each category as your work becomes ready to share. Clearly label practice and concept designs.
+        </div>
+    </div>
+</section>
 
+</main>
 
 <!-- Footer -->
 <footer>
@@ -178,6 +299,63 @@
         <div>Learning · Creating · Designing · Growing</div>
     </div>
 </footer>
+
+<script>
+const businessSlider = document.getElementById("businessSlider");
+const businessTrack = document.getElementById("businessTrack");
+const businessLabel = document.getElementById("businessLabel");
+
+const businessPrev = document.getElementById("businessPrev");
+const businessNext = document.getElementById("businessNext");
+
+let businessIndex = 0;
+let startX = 0;
+let endX = 0;
+
+function showBusinessSlide(index) {
+    businessIndex = Math.max(0, Math.min(index, 1));
+
+    businessTrack.style.transform =
+        `translateX(-${businessIndex * 100}%)`;
+
+    businessLabel.textContent =
+        businessIndex === 0 ? "Front Side" : "Back Side";
+
+    businessPrev.disabled = businessIndex === 0;
+    businessNext.disabled = businessIndex === 1;
+
+    businessPrev.style.opacity = businessIndex === 0 ? "0.5" : "1";
+    businessNext.style.opacity = businessIndex === 1 ? "0.5" : "1";
+}
+
+businessPrev.addEventListener("click", () => {
+    showBusinessSlide(businessIndex - 1);
+});
+
+businessNext.addEventListener("click", () => {
+    showBusinessSlide(businessIndex + 1);
+});
+
+businessSlider.addEventListener("pointerdown", (event) => {
+    startX = event.clientX;
+});
+
+businessSlider.addEventListener("pointerup", (event) => {
+    endX = event.clientX;
+
+    const difference = endX - startX;
+
+    if (Math.abs(difference) > 45) {
+        if (difference < 0) {
+            showBusinessSlide(businessIndex + 1);
+        } else {
+            showBusinessSlide(businessIndex - 1);
+        }
+    }
+});
+
+showBusinessSlide(0);
+</script>
 
 </body>
 </html>
