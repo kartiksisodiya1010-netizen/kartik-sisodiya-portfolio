@@ -239,37 +239,42 @@
         <!-- Business Card Front and Back Showcase -->
         <div class="business-showcase" id="business-card-showcase">
 
-            <div class="eyebrow">My Creative Work</div>
-            <h3>Business Card Design</h3>
+    <div class="eyebrow">My Creative Work</div>
+    <h3>Business Card Design</h3>
 
-            <p class="showcase-description">
-                Explore both sides of my business card design.
-                Swipe or use the buttons to view the design.
-            </p>
+    <p class="showcase-description">
+        Explore both sides of my business card designs.
+        Swipe or use the buttons to view each design.
+    </p>
 
-            <div class="business-slider" id="businessSlider">
-                <div class="business-track" id="businessTrack">
+    <div class="business-slider" id="businessSlider">
+        <div class="business-track" id="businessTrack">
 
-                    <div class="business-slide">
-                        <img
-                            src="assets/portfolio/business-card/Business%20Card%20%201%20Front%20Side.png"
-                            alt="Business Card Front Side">
-                    </div>
+            <!-- Business Card 1 Front -->
+            <div class="business-slide">
+                <img src="assets/portfolio/business-card/Business%20Card%20%201%20Front%20Side.png"
+                     alt="Business Card 1 Front Side">
+            </div>
 
-                    <div class="business-slide">
-                        <img
-                            src="assets/portfolio/business-card/Business%20Card%20Design%20Back%20Side.png"
-                            alt="Business Card Back Side">
-                    </div>
-                    <div class="portfolio-item">
-    <h3>Business Card Design 02</h3>
+            <!-- Business Card 1 Back -->
+            <div class="business-slide">
+                <img src="assets/portfolio/business-card/Business%20Card%20Design%20Back%20Side.png"
+                     alt="Business Card 1 Back Side">
+            </div>
 
-    <div class="business-card-preview">
-        <img src="assets/portfolio/business-card/Business%20Card%202%20Front%20Side.png"
-             alt="Business Card 2 Front Side">
+            <!-- Business Card 2 Front -->
+            <div class="business-slide">
+                <img src="assets/portfolio/business-card/Business%20Card%202%20Front%20Side.png"
+                     alt="Business Card 2 Front Side">
+            </div>
 
-        <img src="assets/portfolio/business-card/Business%20Card%202%20Back%20Side.png"
-             alt="Business Card 2 Back Side">
+            <!-- Business Card 2 Back -->
+            <div class="business-slide">
+                <img src="assets/portfolio/business-card/Business%20Card%202%20Back%20Side.png"
+                     alt="Business Card 2 Back Side">
+            </div>
+
+        </div>
     </div>
 </div>
 
@@ -321,22 +326,28 @@ const businessNext = document.getElementById("businessNext");
 
 let businessIndex = 0;
 let startX = 0;
-let endX = 0;
+
+const businessLabels = [
+    "Design 1 - Front",
+    "Design 1 - Back",
+    "Design 2 - Front",
+    "Design 2 - Back"
+];
 
 function showBusinessSlide(index) {
-    businessIndex = Math.max(0, Math.min(index, 1));
+
+    businessIndex = Math.max(0, Math.min(index, 3));
 
     businessTrack.style.transform =
         `translateX(-${businessIndex * 100}%)`;
 
-    businessLabel.textContent =
-        businessIndex === 0 ? "Front Side" : "Back Side";
+    businessLabel.textContent = businessLabels[businessIndex];
 
     businessPrev.disabled = businessIndex === 0;
-    businessNext.disabled = businessIndex === 1;
+    businessNext.disabled = businessIndex === 3;
 
     businessPrev.style.opacity = businessIndex === 0 ? "0.5" : "1";
-    businessNext.style.opacity = businessIndex === 1 ? "0.5" : "1";
+    businessNext.style.opacity = businessIndex === 3 ? "0.5" : "1";
 }
 
 businessPrev.addEventListener("click", () => {
@@ -352,16 +363,12 @@ businessSlider.addEventListener("pointerdown", (event) => {
 });
 
 businessSlider.addEventListener("pointerup", (event) => {
-    endX = event.clientX;
-
-    const difference = endX - startX;
+    const difference = event.clientX - startX;
 
     if (Math.abs(difference) > 45) {
-        if (difference < 0) {
-            showBusinessSlide(businessIndex + 1);
-        } else {
-            showBusinessSlide(businessIndex - 1);
-        }
+        showBusinessSlide(
+            businessIndex + (difference < 0 ? 1 : -1)
+        );
     }
 });
 
