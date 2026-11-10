@@ -603,6 +603,69 @@ businessSlider.addEventListener("pointerup", (event) => {
 });
 
 showBusinessSlide(0);
+    // Logo Design Slider
+
+const logoSlider = document.getElementById("logoSlider");
+const logoTrack = document.getElementById("logoTrack");
+const logoLabel = document.getElementById("logoLabel");
+
+const logoPrev = document.getElementById("logoPrev");
+const logoNext = document.getElementById("logoNext");
+
+let logoIndex = 0;
+let logoStartX = 0;
+
+const totalLogos = 14;
+
+function showLogoSlide(index) {
+
+    logoIndex = Math.max(
+        0,
+        Math.min(index, totalLogos - 1)
+    );
+
+    logoTrack.style.transform =
+        `translateX(-${logoIndex * 100}%)`;
+
+    logoLabel.textContent =
+        `Logo ${logoIndex + 1} / ${totalLogos}`;
+
+    logoPrev.disabled = logoIndex === 0;
+    logoNext.disabled = logoIndex === totalLogos - 1;
+
+    logoPrev.style.opacity =
+        logoPrev.disabled ? "0.5" : "1";
+
+    logoNext.style.opacity =
+        logoNext.disabled ? "0.5" : "1";
+}
+
+logoPrev.addEventListener("click", () => {
+    showLogoSlide(logoIndex - 1);
+});
+
+logoNext.addEventListener("click", () => {
+    showLogoSlide(logoIndex + 1);
+});
+
+logoSlider.addEventListener("pointerdown", (event) => {
+    logoStartX = event.clientX;
+});
+
+logoSlider.addEventListener("pointerup", (event) => {
+
+    const difference = event.clientX - logoStartX;
+
+    if (Math.abs(difference) > 45) {
+
+        showLogoSlide(
+            logoIndex + (difference < 0 ? 1 : -1)
+        );
+
+    }
+});
+
+showLogoSlide(0);
 </script>
 
 </body>
