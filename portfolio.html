@@ -273,6 +273,41 @@
                 <img src="assets/portfolio/business-card/Business%20Card%202%20Back%20Side.png"
                      alt="Business Card 2 Back Side">
             </div>
+            <!-- Business Card 3 Front -->
+<div class="business-slide">
+    <img src="assets/portfolio/business-card/Business%20Card%203%20Front%20Side.png"
+         alt="Business Card 3 Front Side">
+</div>
+
+<!-- Business Card 3 Back -->
+<div class="business-slide">
+    <img src="assets/portfolio/business-card/Business%20Card%203%20Back%20Side.png"
+         alt="Business Card 3 Back Side">
+</div>
+
+<!-- Business Card 4 Front -->
+<div class="business-slide">
+    <img src="assets/portfolio/business-card/Business%20Card%204%20Front%20Side.png"
+         alt="Business Card 4 Front Side">
+</div>
+
+<!-- Business Card 4 Back -->
+<div class="business-slide">
+    <img src="assets/portfolio/business-card/Business%20Card%204%20Back%20Side.png"
+         alt="Business Card 4 Back Side">
+</div>
+
+<!-- Business Card 5 Front -->
+<div class="business-slide">
+    <img src="assets/portfolio/business-card/Business%20Card%205%20Front%20View.png"
+         alt="Business Card 5 Front View">
+</div>
+
+<!-- Business Card 5 Back -->
+<div class="business-slide">
+    <img src="assets/portfolio/business-card/Business%20Card%205%20Back%20View.png"
+         alt="Business Card 5 Back View">
+</div>
 
         </div>
     </div>
@@ -331,23 +366,37 @@ const businessLabels = [
     "Design 1 - Front",
     "Design 1 - Back",
     "Design 2 - Front",
-    "Design 2 - Back"
+    "Design 2 - Back",
+    "Design 3 - Front",
+    "Design 3 - Back",
+    "Design 4 - Front",
+    "Design 4 - Back",
+    "Design 5 - Front",
+    "Design 5 - Back"
 ];
 
 function showBusinessSlide(index) {
 
-    businessIndex = Math.max(0, Math.min(index, 3));
+    businessIndex = Math.max(
+        0,
+        Math.min(index, businessLabels.length - 1)
+    );
 
     businessTrack.style.transform =
         `translateX(-${businessIndex * 100}%)`;
 
-    businessLabel.textContent = businessLabels[businessIndex];
+    businessLabel.textContent =
+        businessLabels[businessIndex];
 
     businessPrev.disabled = businessIndex === 0;
-    businessNext.disabled = businessIndex === 3;
+    businessNext.disabled =
+        businessIndex === businessLabels.length - 1;
 
-    businessPrev.style.opacity = businessIndex === 0 ? "0.5" : "1";
-    businessNext.style.opacity = businessIndex === 3 ? "0.5" : "1";
+    businessPrev.style.opacity =
+        businessPrev.disabled ? "0.5" : "1";
+
+    businessNext.style.opacity =
+        businessNext.disabled ? "0.5" : "1";
 }
 
 businessPrev.addEventListener("click", () => {
