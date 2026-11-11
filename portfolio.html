@@ -99,6 +99,83 @@
         padding: 9px 13px;
     }
 }
+    <!-- Poster Design Showcase -->
+
+<div class="poster-showcase" id="poster-design-showcase">
+
+    <div class="eyebrow">My Creative Work</div>
+
+    <h3>Poster Design Portfolio</h3>
+
+    <p>
+        Explore my collection of 10 creative poster designs.
+        Swipe or use the buttons to view each design.
+    </p>
+
+    <div class="poster-slider" id="posterSlider">
+
+        <div class="poster-track" id="posterTrack">
+
+            <div class="poster-slide">
+                <img src="assets/portfolio/poster-design/Poster%20Design%201.png" alt="Poster Design 1">
+            </div>
+
+            <div class="poster-slide">
+                <img src="assets/portfolio/poster-design/Poster%20Design%202.png" alt="Poster Design 2">
+            </div>
+
+            <div class="poster-slide">
+                <img src="assets/portfolio/poster-design/Poster%20Design%203.png" alt="Poster Design 3">
+            </div>
+
+            <div class="poster-slide">
+                <img src="assets/portfolio/poster-design/Poster%20Design%204.png" alt="Poster Design 4">
+            </div>
+
+            <div class="poster-slide">
+                <img src="assets/portfolio/poster-design/Poster%20Design%205.jpeg" alt="Poster Design 5">
+            </div>
+
+            <div class="poster-slide">
+                <img src="assets/portfolio/poster-design/Poster%20Design%206.jpeg" alt="Poster Design 6">
+            </div>
+
+            <div class="poster-slide">
+                <img src="assets/portfolio/poster-design/Poster%20Design%207.jpeg" alt="Poster Design 7">
+            </div>
+
+            <div class="poster-slide">
+                <img src="assets/portfolio/poster-design/Poster%20Design%208.jpeg" alt="Poster Design 8">
+            </div>
+
+            <div class="poster-slide">
+                <img src="assets/portfolio/poster-design/Poster%20Design%209.jpeg" alt="Poster Design 9">
+            </div>
+
+            <div class="poster-slide">
+                <img src="assets/portfolio/poster-design/Poster%20Design%2010.jpeg" alt="Poster Design 10">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="poster-controls">
+
+        <button type="button" id="posterPrev">
+            ← Previous
+        </button>
+
+        <span class="poster-label" id="posterLabel">
+            Poster 1 / 10
+        </span>
+
+        <button type="button" id="posterNext">
+            Next →
+        </button>
+
+    </div>
+
+</div>
 /* Business Card Showcase */
 .business-showcase {
     max-width: 850px;
@@ -760,6 +837,69 @@ logoSlider.addEventListener("pointerup", (event) => {
 });
 
 showLogoSlide(0);
+    // Poster Design Slider
+
+const posterSlider = document.getElementById("posterSlider");
+const posterTrack = document.getElementById("posterTrack");
+const posterLabel = document.getElementById("posterLabel");
+
+const posterPrev = document.getElementById("posterPrev");
+const posterNext = document.getElementById("posterNext");
+
+let posterIndex = 0;
+let posterStartX = 0;
+
+const totalPosters = 10;
+
+function showPosterSlide(index) {
+
+    posterIndex = Math.max(
+        0,
+        Math.min(index, totalPosters - 1)
+    );
+
+    posterTrack.style.transform =
+        `translateX(-${posterIndex * 100}%)`;
+
+    posterLabel.textContent =
+        `Poster ${posterIndex + 1} / ${totalPosters}`;
+
+    posterPrev.disabled = posterIndex === 0;
+    posterNext.disabled = posterIndex === totalPosters - 1;
+
+    posterPrev.style.opacity =
+        posterPrev.disabled ? "0.5" : "1";
+
+    posterNext.style.opacity =
+        posterNext.disabled ? "0.5" : "1";
+}
+
+posterPrev.addEventListener("click", () => {
+    showPosterSlide(posterIndex - 1);
+});
+
+posterNext.addEventListener("click", () => {
+    showPosterSlide(posterIndex + 1);
+});
+
+posterSlider.addEventListener("pointerdown", (event) => {
+    posterStartX = event.clientX;
+});
+
+posterSlider.addEventListener("pointerup", (event) => {
+
+    const difference = event.clientX - posterStartX;
+
+    if (Math.abs(difference) > 45) {
+
+        showPosterSlide(
+            posterIndex + (difference < 0 ? 1 : -1)
+        );
+
+    }
+});
+
+showPosterSlide(0);
 </script>
 
 </body>
