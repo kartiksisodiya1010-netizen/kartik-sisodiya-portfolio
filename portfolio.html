@@ -190,6 +190,98 @@
         padding: 9px 13px;
     }
 }
+    /* Poster Design Showcase */
+
+.poster-showcase {
+    max-width: 850px;
+    margin: 35px auto;
+    padding: 25px;
+    background: var(--card, #ffffff);
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+.poster-slider {
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 2 / 3;
+    margin: 22px auto 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f5f5f5;
+    touch-action: pan-y;
+    cursor: grab;
+    user-select: none;
+}
+
+.poster-slider:active {
+    cursor: grabbing;
+}
+
+.poster-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.45s ease;
+}
+
+.poster-slide {
+    min-width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.poster-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.poster-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.poster-controls button {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.poster-label {
+    font-weight: 600;
+    min-width: 100px;
+}
+
+@media (max-width: 600px) {
+    .poster-showcase {
+        padding: 15px;
+    }
+
+    .poster-slider {
+        max-width: 100%;
+    }
+
+    .poster-controls {
+        gap: 10px;
+    }
+
+    .poster-controls button {
+        padding: 9px 13px;
+    }
+}
 </style>
 </head>
 
