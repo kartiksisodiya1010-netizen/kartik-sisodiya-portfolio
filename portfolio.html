@@ -283,6 +283,107 @@
         padding: 9px 13px;
     }
 }
+    /* Banner Design Showcase */
+
+.banner-showcase {
+    max-width: 900px;
+    margin: 35px auto;
+    padding: 25px;
+    background: var(--card, #ffffff);
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+.banner-showcase h2 {
+    margin-bottom: 8px;
+}
+
+.banner-slider {
+    width: 100%;
+    max-width: 850px;
+    height: clamp(200px, 42vw, 420px);
+    margin: 22px auto 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f5f5f5;
+    touch-action: pan-y;
+    cursor: grab;
+    user-select: none;
+}
+
+.banner-slider:active {
+    cursor: grabbing;
+}
+
+.banner-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.45s ease;
+}
+
+.banner-slide {
+    min-width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.banner-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.banner-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.banner-controls button {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.banner-controls button:hover {
+    opacity: 0.8;
+}
+
+.banner-label {
+    font-weight: 600;
+    min-width: 80px;
+}
+
+@media (max-width: 600px) {
+    .banner-showcase {
+        margin: 25px 10px;
+        padding: 15px;
+    }
+
+    .banner-slider {
+        height: 220px;
+    }
+
+    .banner-controls {
+        gap: 10px;
+    }
+
+    .banner-controls button {
+        padding: 9px 13px;
+    }
+}
 </style>
 </head>
 
@@ -405,12 +506,14 @@
                 <span class="pill">Infographic Projects</span>
             </div>
 
-            <div class="card">
-                <div class="icon">▭</div>
-                <h3>Banner Design</h3>
-                <p>Digital banners, promotional banners and social media advertising graphics.</p>
-                <span class="pill">Banner Projects</span>
-            </div>
+         <div class="card">
+    <div class="icon">▭</div>
+    <h3>Banner Design</h3>
+    <p>Digital banners, promotional banners and social media advertising graphics.</p>
+    <a class="btn" href="#banner-design-showcase">
+        View Banner Design
+    </a>
+</div>
 
             <div class="card">
                 <div class="icon">▶</div>
@@ -714,11 +817,21 @@
 
     </div>
 
-    <div class="banner-controls">
-        <button onclick="changeBanner(-1)">Previous</button>
-        <span id="bannerLabel">1 / 5</span>
-        <button onclick="changeBanner(1)">Next</button>
-    </div>
+ <div class="banner-controls">
+
+    <button type="button" id="bannerPrev">
+        ← Previous
+    </button>
+
+    <span class="banner-label" id="bannerLabel">
+        Banner 1 / 5
+    </span>
+
+    <button type="button" id="bannerNext">
+        Next →
+    </button>
+
+</div>
 </section>
 
 <!-- Publishing Notice -->
@@ -938,9 +1051,71 @@ posterSlider.addEventListener("pointerup", (event) => {
 });
 
 showPosterSlide(0);
-    let currentBanner = 0;
+   /* Banner Design Slider */
 
-function changeBanner(direction) {
+const bannerSlider = document.querySelector(".banner-slider");
+const bannerTrack = document.getElementById("bannerTrack");
+const bannerLabel = document.getElementById("bannerLabel");
+
+const bannerPrev = document.getElementById("bannerPrev");
+const bannerNext = document.getElementById("bannerNext");
+
+let bannerIndex = 0;
+let bannerStartX = 0;
+
+const totalBanners = 5;
+
+function showBannerSlide(index) {
+
+    bannerIndex = Math.max(
+        0,
+        Math.min(index, totalBanners - 1)
+    );
+
+    bannerTrack.style.transform =
+        `translateX(-${bannerIndex * 100}%)`;
+
+    bannerLabel.textContent =
+        `Banner ${bannerIndex + 1} / ${totalBanners}`;
+
+    bannerPrev.disabled = bannerIndex === 0;
+    bannerNext.disabled = bannerIndex === totalBanners - 1;
+
+    bannerPrev.style.opacity =
+        bannerPrev.disabled ? "0.5" : "1";
+
+    bannerNext.style.opacity =
+        bannerNext.disabled ? "0.5" : "1";
+}
+
+bannerPrev.addEventListener("click", () => {
+    showBannerSlide(bannerIndex - 1);
+});
+
+bannerNext.addEventListener("click", () => {
+    showBannerSlide(bannerIndex + 1);
+});
+
+/* Mobile Swipe Support */
+
+bannerSlider.addEventListener("pointerdown", (event) => {
+    bannerStartX = event.clientX;
+});
+
+bannerSlider.addEventListener("pointerup", (event) => {
+
+    const difference = event.clientX - bannerStartX;
+
+    if (Math.abs(difference) > 45) {
+
+        showBannerSlide(
+            bannerIndex + (difference < 0 ? 1 : -1)
+        );
+
+    }
+});
+
+showBannerSlide(0);
 
     const track = document.getElementById("bannerTrack");
     const slides = document.querySelectorAll(".banner-slide");
