@@ -1117,28 +1117,6 @@ bannerSlider.addEventListener("pointerup", (event) => {
 
 showBannerSlide(0);
 
-    const track = document.getElementById("bannerTrack");
-    const slides = document.querySelectorAll(".banner-slide");
-    const label = document.getElementById("bannerLabel");
-
-    if (!track || slides.length === 0) return;
-
-    currentBanner += direction;
-
-    if (currentBanner >= slides.length) {
-        currentBanner = 0;
-    }
-
-    if (currentBanner < 0) {
-        currentBanner = slides.length - 1;
-    }
-
-    track.style.transform =
-        `translateX(-${currentBanner * 100}%)`;
-
-    label.textContent =
-        `${currentBanner + 1} / ${slides.length}`;
-}
 </script>
 
 </body>
