@@ -681,6 +681,44 @@
         </div>
 
     </div>
+    <section class="banner-showcase" id="banner-design-showcase">
+
+    <h2>Banner Design Portfolio</h2>
+    <p>Explore my creative banner design collection.</p>
+
+    <div class="banner-slider">
+
+        <div class="banner-track" id="bannerTrack">
+
+            <div class="banner-slide">
+                <img src="assets/portfolio/banner-design/Banner%20Design%201.png" alt="Banner Design 1">
+            </div>
+
+            <div class="banner-slide">
+                <img src="assets/portfolio/banner-design/Banner%20Design%202.png" alt="Banner Design 2">
+            </div>
+
+            <div class="banner-slide">
+                <img src="assets/portfolio/banner-design/Banner%20Design%203.png" alt="Banner Design 3">
+            </div>
+
+            <div class="banner-slide">
+                <img src="assets/portfolio/banner-design/Banner%20Design%204.png" alt="Banner Design 4">
+            </div>
+
+            <div class="banner-slide">
+                <img src="assets/portfolio/banner-design/Banner%20Design%205.png" alt="Banner Design 5">
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="banner-controls">
+        <button onclick="changeBanner(-1)">Previous</button>
+        <span id="bannerLabel">1 / 5</span>
+        <button onclick="changeBanner(1)">Next</button>
+    </div>
 </section>
 
 <!-- Publishing Notice -->
@@ -900,6 +938,32 @@ posterSlider.addEventListener("pointerup", (event) => {
 });
 
 showPosterSlide(0);
+    let currentBanner = 0;
+
+function changeBanner(direction) {
+
+    const track = document.getElementById("bannerTrack");
+    const slides = document.querySelectorAll(".banner-slide");
+    const label = document.getElementById("bannerLabel");
+
+    if (!track || slides.length === 0) return;
+
+    currentBanner += direction;
+
+    if (currentBanner >= slides.length) {
+        currentBanner = 0;
+    }
+
+    if (currentBanner < 0) {
+        currentBanner = slides.length - 1;
+    }
+
+    track.style.transform =
+        `translateX(-${currentBanner * 100}%)`;
+
+    label.textContent =
+        `${currentBanner + 1} / ${slides.length}`;
+}
 </script>
 
 </body>
