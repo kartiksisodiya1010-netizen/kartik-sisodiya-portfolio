@@ -383,7 +383,75 @@
     .banner-controls button {
         padding: 9px 13px;
     }
-    }
+/* Thumbnail Design Showcase */
+
+.thumbnail-showcase {
+    max-width: 850px;
+    margin: 35px auto;
+    padding: 25px;
+    background: var(--card, #ffffff);
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+.thumbnail-slider {
+    width: 100%;
+    max-width: 520px;
+    aspect-ratio: 16 / 9;
+    margin: 22px auto 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f5f5f5;
+    touch-action: pan-y;
+    cursor: grab;
+    user-select: none;
+}
+
+.thumbnail-slider:active {
+    cursor: grabbing;
+}
+
+.thumbnail-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.45s ease;
+}
+
+.thumbnail-slide {
+    min-width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.thumbnail-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.thumbnail-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.thumbnail-controls button {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+}
 
 .thumbnail-label {
     font-weight: 600;
@@ -392,8 +460,11 @@
 
 @media (max-width: 600px) {
     .thumbnail-showcase {
-        margin: 25px 10px;
         padding: 15px;
+    }
+
+    .thumbnail-slider {
+        max-width: 100%;
     }
 
     .thumbnail-controls {
