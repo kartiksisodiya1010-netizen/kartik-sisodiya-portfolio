@@ -383,6 +383,27 @@
     .banner-controls button {
         padding: 9px 13px;
     }
+    }
+
+.thumbnail-label {
+    font-weight: 600;
+    min-width: 100px;
+}
+
+@media (max-width: 600px) {
+    .thumbnail-showcase {
+        margin: 25px 10px;
+        padding: 15px;
+    }
+
+    .thumbnail-controls {
+        gap: 10px;
+    }
+
+    .thumbnail-controls button {
+        padding: 9px 13px;
+    }
+}
 }
 </style>
 </head>
@@ -519,7 +540,9 @@
                 <div class="icon">▶</div>
                 <h3>Thumbnail Design</h3>
                 <p>Eye-catching YouTube thumbnails and digital video cover designs.</p>
-                <span class="pill">Thumbnail Projects</span>
+                <a class="btn" href="#thumbnail-design-showcase">
+    View Thumbnail Design
+</a>
             </div>
 
         </div>
@@ -833,7 +856,83 @@
 
 </div>
 </section>
+<!-- Thumbnail Design Showcase -->
 
+<section class="thumbnail-showcase" id="thumbnail-design-showcase">
+
+    <div class="eyebrow">My Creative Work</div>
+
+    <h2>Thumbnail Design Portfolio</h2>
+
+    <p>
+        Explore my collection of 10 creative YouTube thumbnail designs.
+        Swipe or use the buttons to view each design.
+    </p>
+
+    <div class="thumbnail-slider" id="thumbnailSlider">
+
+        <div class="thumbnail-track" id="thumbnailTrack">
+
+            <div class="thumbnail-slide">
+                <img src="assets/portfolio/thumbnail-design/Thumbnail%20Design%201.jpeg" alt="Thumbnail Design 1">
+            </div>
+
+            <div class="thumbnail-slide">
+                <img src="assets/portfolio/thumbnail-design/Thumbnail%20Design%202.jpeg" alt="Thumbnail Design 2">
+            </div>
+
+            <div class="thumbnail-slide">
+                <img src="assets/portfolio/thumbnail-design/Thumbnail%20Design%203.jpeg" alt="Thumbnail Design 3">
+            </div>
+
+            <div class="thumbnail-slide">
+                <img src="assets/portfolio/thumbnail-design/Thumbnail%20Design%204.jpeg" alt="Thumbnail Design 4">
+            </div>
+
+            <div class="thumbnail-slide">
+                <img src="assets/portfolio/thumbnail-design/Thumbnail%20Design%205.png" alt="Thumbnail Design 5">
+            </div>
+
+            <div class="thumbnail-slide">
+                <img src="assets/portfolio/thumbnail-design/Thumbnail%20Design%206.jpeg" alt="Thumbnail Design 6">
+            </div>
+
+            <div class="thumbnail-slide">
+                <img src="assets/portfolio/thumbnail-design/Thumbnail%20Design%207.jpeg" alt="Thumbnail Design 7">
+            </div>
+
+            <div class="thumbnail-slide">
+                <img src="assets/portfolio/thumbnail-design/Thumbnail%20Design%208.jpeg" alt="Thumbnail Design 8">
+            </div>
+
+            <div class="thumbnail-slide">
+                <img src="assets/portfolio/thumbnail-design/Thumbnail%20Design%209.jpeg" alt="Thumbnail Design 9">
+            </div>
+
+            <div class="thumbnail-slide">
+                <img src="assets/portfolio/thumbnail-design/Thumbnail%20Design%2010.jpeg" alt="Thumbnail Design 10">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="thumbnail-controls">
+
+        <button type="button" id="thumbnailPrev">
+            ← Previous
+        </button>
+
+        <span class="thumbnail-label" id="thumbnailLabel">
+            Thumbnail 1 / 10
+        </span>
+
+        <button type="button" id="thumbnailNext">
+            Next →
+        </button>
+
+    </div>
+
+</section>
 <!-- Publishing Notice -->
 <section>
     <div class="wrap">
@@ -1116,7 +1215,67 @@ bannerSlider.addEventListener("pointerup", (event) => {
 });
 
 showBannerSlide(0);
+/* Thumbnail Design Slider */
 
+const thumbnailSlider = document.getElementById("thumbnailSlider");
+const thumbnailTrack = document.getElementById("thumbnailTrack");
+const thumbnailLabel = document.getElementById("thumbnailLabel");
+
+const thumbnailPrev = document.getElementById("thumbnailPrev");
+const thumbnailNext = document.getElementById("thumbnailNext");
+
+let thumbnailIndex = 0;
+let thumbnailStartX = 0;
+
+const totalThumbnails = 10;
+
+function showThumbnailSlide(index) {
+
+    thumbnailIndex = Math.max(
+        0,
+        Math.min(index, totalThumbnails - 1)
+    );
+
+    thumbnailTrack.style.transform =
+        `translateX(-${thumbnailIndex * 100}%)`;
+
+    thumbnailLabel.textContent =
+        `Thumbnail ${thumbnailIndex + 1} / ${totalThumbnails}`;
+
+    thumbnailPrev.disabled = thumbnailIndex === 0;
+    thumbnailNext.disabled = thumbnailIndex === totalThumbnails - 1;
+
+    thumbnailPrev.style.opacity =
+        thumbnailPrev.disabled ? "0.5" : "1";
+
+    thumbnailNext.style.opacity =
+        thumbnailNext.disabled ? "0.5" : "1";
+}
+
+thumbnailPrev.addEventListener("click", () => {
+    showThumbnailSlide(thumbnailIndex - 1);
+});
+
+thumbnailNext.addEventListener("click", () => {
+    showThumbnailSlide(thumbnailIndex + 1);
+});
+
+thumbnailSlider.addEventListener("pointerdown", (event) => {
+    thumbnailStartX = event.clientX;
+});
+
+thumbnailSlider.addEventListener("pointerup", (event) => {
+
+    const difference = event.clientX - thumbnailStartX;
+
+    if (Math.abs(difference) > 45) {
+        showThumbnailSlide(
+            thumbnailIndex + (difference < 0 ? 1 : -1)
+        );
+    }
+});
+
+showThumbnailSlide(0);
 </script>
 
 </body>
